@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "CameraSessionView.h"
 
-@interface ViewController ()
+@interface ViewController () <CACameraSessionDelegate>
+//@property (nonatomic, strong) CameraSessionView *cameraView;
+@property (strong, nonatomic) IBOutlet CameraSessionView *CameraView;
 
 @end
 
@@ -16,6 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _CameraView = [[CameraSessionView alloc] init];
+    
+    _CameraView.delegate = self;
+    [_CameraView hideFlashButton];
+    [_CameraView hideCameraToggleButton];
+    [_CameraView hideDismissButton];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
